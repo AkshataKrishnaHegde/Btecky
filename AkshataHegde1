@@ -1,0 +1,83 @@
+import java.util.Scanner;
+class guesser{
+    int guessNum;
+    public int getGuessNumber(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Hey Guesser! Guess the number");
+        guessNum=sc.nextInt();
+        return guessNum;
+    }
+}
+class player{
+    int numplayer;
+    public int getNumFromPlayer(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Player, Plz guess a number");
+        numplayer=sc.nextInt();
+        return numplayer;
+    }
+}
+class umpire{
+    int numGuess;
+    int numP1;
+    int numP2;
+    int numP3;
+
+    public void getNumberFromGuesser()
+    {
+        guesser obj = new guesser();
+        numGuess=obj.getGuessNumber();
+    }
+    public void collectFromPlayer(){
+        player p1 = new player();
+        player p2 =new player();
+        player p3 =new player();
+        numP1=p1.getNumFromPlayer();
+        numP2=p2.getNumFromPlayer();
+        numP3=p3.getNumFromPlayer();
+
+    }
+    public void calcResult(){
+        if(numGuess==numP1){
+            if(numP1==numP2 && numP1==numP3){
+                System.out.println("All are winners");
+            }
+            else if(numP1==numP2){
+                System.out.println("Player 1 and 2 are winners");
+            }
+            else if(numP1==numP3){
+                System.out.println("Player 1 and 3 are winners");
+            }
+            else{
+                System.out.println("Player 1 is a winner");
+            }
+        }
+        else if(numGuess==numP2){
+            if(numP2==numP3){
+                System.out.println("Player 2 and 3 are winners");
+            }
+            else{
+                System.out.println("Player 2 is the winner");
+            }
+        }
+        else if(numGuess==numP3){
+            System.out.println("Player 3 is the winner");
+        }
+        else {
+            System.out.println("You all lost the game");
+        }
+    }
+
+
+}
+
+
+public class The_Guesser_Game {
+    public static void main(String[] args) {
+
+        umpire u = new umpire();
+        u.getNumberFromGuesser();
+        u.collectFromPlayer();
+        u.calcResult();
+    }
+}
